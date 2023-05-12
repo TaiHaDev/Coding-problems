@@ -1,7 +1,6 @@
-package nab_intern;
+package anh_tin_dtrai;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class Task2 {

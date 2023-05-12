@@ -1,4 +1,4 @@
-package nab_intern;
+package anh_tin_dtrai;
 
 public class Task1 {
     /**
