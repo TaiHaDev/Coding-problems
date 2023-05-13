@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class KthSmallestElementInBST230 {
@@ -13,6 +16,7 @@ public class KthSmallestElementInBST230 {
         TreeNode treeNode1 = new TreeNode(2, treeNode, null);
         TreeNode treeNode2 = new TreeNode(3, treeNode1, null);
         System.out.println(kthSmallest(treeNode2, 3));
+        new ArrayList<>().clear();
 
     }
     public static int kthSmallest(TreeNode root, int k) {
