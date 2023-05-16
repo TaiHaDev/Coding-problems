@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Task2 {
     /**
-     * img.png
+     * ques1.png
      */
     public static void main(String[] args) {
         int[][] tests = {{1,2,2},{1,3,3}, {1,4,4}};
