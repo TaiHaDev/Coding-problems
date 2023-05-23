@@ -6,6 +6,7 @@ public class DaysBetween {
      */
     public static void main(String[] args) {
         System.out.println(daysBetween(2010, 5, 1,2011,5,1));
+
     }
     public static long daysBetween(int year1, int month1, int day1, int year2, int month2, int day2) {
         // first idea
