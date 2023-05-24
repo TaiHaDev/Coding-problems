@@ -1,5 +1,5 @@
 # CodingProblems
-A coding diary I guess :)
+Leetcode solutions
 
 
 
