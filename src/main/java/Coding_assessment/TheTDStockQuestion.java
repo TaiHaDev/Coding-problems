@@ -42,8 +42,4 @@ public class TheTDStockQuestion {
 //    strategy = [-1, 1, 0, 0, 1, 1] resulting in profit = 18.
 //    So, the maximum achievable profit is 18.
 
-
-
-
-
 }
