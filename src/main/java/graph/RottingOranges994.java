@@ -4,6 +4,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class RottingOranges994 {
+    /**
+     * key things in this exercise is to count the fresh orange at the start and add the rotten oranges to queue.
+     * The while loop check if the queue is not empty and fresh orange is greater than 0
+     * @param args
+     */
     public static void main(String[] args) {
         int[][] grid = {
                 {0,2}
