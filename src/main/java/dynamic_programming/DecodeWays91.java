@@ -1,4 +1,4 @@
-package no_category;
+package dynamic_programming;
 
 public class DecodeWays91 {
     public static void main(String[] args) {
