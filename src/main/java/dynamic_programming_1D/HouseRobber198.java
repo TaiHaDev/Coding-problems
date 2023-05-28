@@ -1,4 +1,4 @@
-package dynamic_programming;
+package dynamic_programming_1D;
 
 public class HouseRobber198 {
     public static void main(String[] args) {
