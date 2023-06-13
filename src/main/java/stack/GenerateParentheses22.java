@@ -7,12 +7,18 @@ import java.util.Stack;
 public class GenerateParentheses22 {
     public static void main(String[] args) {
         System.out.println(new GenerateParentheses22().generateParenthesis(2));
+        int n = 0;
+
     }
+
+
+
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
 
         backtrack(result, n, "", new Stack<>(), 0);
         return result;
+
     }
 
     private void backtrack(List<String> result,int n, String cur, Stack<String> stack, int count) {
