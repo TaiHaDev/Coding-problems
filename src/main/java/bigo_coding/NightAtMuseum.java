@@ -1,4 +1,4 @@
-package array;
+package bigo_coding;
 
 import java.util.Scanner;
 
