@@ -1,4 +1,4 @@
-package bigo_coding;
+package not_leetcode;
 
 import java.util.Scanner;
 
