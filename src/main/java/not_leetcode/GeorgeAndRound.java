@@ -15,15 +15,15 @@ public class GeorgeAndRound {
         for (int i = 0; i < actual; i++) {
             actualNums[i] = sc.nextInt();
         }
-        int last = 0;
         int count = expected;
-        for (int i = 0; i < expected; i++) {
-            for (int j = last; j < actual; j++) {
-                if (expectedNums[i] <= actualNums[j]) {
-                    count--;
-                    last = j + 1;
-                    break;
-                }
+        int expectIndex = 0, actualIndex = 0;
+        while(expectIndex < expected && actualIndex < actual) {
+            if (expectedNums[expectIndex] <= actualNums[actualIndex]) {
+                expectIndex++;
+                actualIndex++;
+                count--;
+            } else {
+                actualIndex++;
             }
         }
         System.out.println(count);

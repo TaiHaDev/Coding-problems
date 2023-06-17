@@ -1,55 +1,48 @@
 package not_leetcode;
 
+
 import java.util.Scanner;
 
 public class ConstantRange {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // Read input
         int n = scanner.nextInt();
-        int[] a = new int[n];
+        int[] dataPoints = new int[n];
         for (int i = 0; i < n; i++) {
-            a[i] = scanner.nextInt();
+            dataPoints[i] = scanner.nextInt();
         }
-        scanner.close();
 
-        int result = findLongestConstantRange(n, a);
-        System.out.println(result);
-    }
+        // Frequency table to keep track of the occurrences
+        int[] freq = new int[100001];
+        int left = 0, maxLen = 0;
+        int maxVal = dataPoints[0], minVal = dataPoints[0];
 
-    public static int findLongestConstantRange(int n, int[] a) {
-        int maxRangeLength = 0;
-        int rangeStart = 0;
-        int rangeEnd = 0;
-        int minValue = a[0];
-        int maxValue = a[0];
+        // Sliding window with two pointers
+        for (int right = 0; right < n; right++) {
+            int current = dataPoints[right];
+            freq[current]++;
 
-        for (int i = 1; i < n; i++) {
-            if (a[i] > maxValue) {
-                maxValue = a[i];
-            }
-            if (a[i] < minValue) {
-                minValue = a[i];
-            }
+            maxVal = Math.max(maxVal, current);
+            minVal = Math.min(minVal, current);
 
-            if (maxValue - minValue > 1) {
-                int rangeLength = rangeEnd - rangeStart + 1;
-                if (rangeLength > maxRangeLength) {
-                    maxRangeLength = rangeLength;
+            while (maxVal - minVal > 1) {
+                freq[dataPoints[left]]--;
+                if (freq[dataPoints[left]] == 0 && dataPoints[left] == maxVal) {
+                    maxVal--;
                 }
-                rangeStart = i;
-                rangeEnd = i;
-                maxValue = a[i];
-                minValue = a[i];
-            } else {
-                rangeEnd = i;
+                if (freq[dataPoints[left]] == 0 && dataPoints[left] == minVal) {
+                    minVal++;
+                }
+                left++;
             }
+
+            maxLen = Math.max(maxLen, right - left + 1);
         }
 
-        int rangeLength = rangeEnd - rangeStart + 1;
-        if (rangeLength > maxRangeLength) {
-            maxRangeLength = rangeLength;
-        }
-
-        return maxRangeLength;
+        // Output the result
+        System.out.println(maxLen);
     }
 }
