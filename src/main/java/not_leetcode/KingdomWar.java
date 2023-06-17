@@ -21,17 +21,19 @@ public class KingdomWar {
         }
 
         // logic
-        int last = 0;
+        int armyIndex = 0, vestIndex = 0;
         int count = 0;
         List<int[]> resultPair = new ArrayList<>();
-        for (int i = 0; i < army; i++) {
-            for (int j = last; j < vest; j++) {
-                if (armySize[i] - x <= vestSize[j] && vestSize[j] <= armySize[i] + y) {
-                    last = j + 1;
-                    count++;
-                    resultPair.add(new int[] {i + 1, j + 1});
-                    break;
-                }
+        while (armyIndex < army && vestIndex < vest) {
+            if (armySize[armyIndex] - x <= vestSize[vestIndex] && vestSize[vestIndex] <= armySize[armyIndex] + y) {
+                count++;
+                resultPair.add(new int[]{armyIndex + 1, vestIndex + 1});
+                armyIndex++;
+                vestIndex++;
+            } else if (vestSize[vestIndex] < armySize[armyIndex] - x) {
+                vestIndex++;
+            } else {
+                armyIndex++;
             }
         }
         System.out.println(count);
