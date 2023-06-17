@@ -1,41 +1,44 @@
 package not_leetcode;
 
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class MinSegment1 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] nums = new int[n];
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        int[] a = new int[n];
         for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
+            a[i] = scanner.nextInt();
         }
-        int count = 0;
-        int right = -1;
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
-            if (set.add(nums[i])) {
+
+        Map<Integer, Integer> occurrences = new HashMap<>();
+        int left = 0, count = 0;
+        int resultLeft = -2, resultRight = -2;
+
+        for (int right = 0; right < n; right++) {
+            occurrences.put(a[right], occurrences.getOrDefault(a[right], 0) + 1);
+            if (occurrences.get(a[right]) == 1) {
                 count++;
             }
+
+            if ( occurrences.get(a[left]) > 1) {
+                occurrences.put(a[left], occurrences.get(a[left]) - 1);
+                if (occurrences.get(a[left]) == 0) {
+                    count--;
+                }
+                left++;
+            }
             if (count == k) {
-                right = i;
+                resultLeft = left;
+                resultRight = right;
                 break;
             }
         }
-        set.clear();
-        count = 0;
-        int left = -1;
-        for (int i = right; i >= 0; i--) {
-            if (set.add(nums[i]))
-                count++;
-            if (count == k) {
-                left = i;
-                break;
-            }
-        }
-        right = right == -1 ? -1 : right + 1;
-        left = left == -1 ? - 1: left + 1;
-        System.out.println(left + " " + right);
+        System.out.println((resultLeft + 1) + " " + (resultRight + 1));
     }
 }
