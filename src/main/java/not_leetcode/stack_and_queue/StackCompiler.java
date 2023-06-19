@@ -24,7 +24,7 @@ public class StackCompiler {
                         break;
                     }
                     stack.pop();
-                    max = Math.max(i + 1, max);
+                    max = stack.isEmpty() ? i + 1 : max; // if stack is empty, the expression is valid so far.
                 }
             }
             if (stack.isEmpty()) System.out.println(max);
