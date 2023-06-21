@@ -1,4 +1,4 @@
-package not_leetcode.graph;
+package not_leetcode.graph.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
