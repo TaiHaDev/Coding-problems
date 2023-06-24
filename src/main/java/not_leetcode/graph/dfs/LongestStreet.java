@@ -5,51 +5,63 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LongestStreet {
+
+    private static List<List<Edge>> adjList;
+    private static int furthestNode = 0;
+    private static int maxDistance = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        while (n-- > 0) {
-            int vertices = sc.nextInt();
-            List<TownStreet>[] adjList = new List[vertices];
-            for (int i = 0; i < vertices; i++) {
-                adjList[i] = new ArrayList<>();
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            adjList = new ArrayList<>();
+
+            for (int i = 0; i < n; i++) {
+                adjList.add(new ArrayList<>());
             }
-            for (int i = 1; i < vertices; i++) {
-                int v1 = sc.nextInt() - 1;
-                int v2 = sc.nextInt() - 1;
-                int length = sc.nextInt();
-                adjList[v1].add(new TownStreet(v2, length));
-                adjList[v2].add(new TownStreet(v1, length));
+
+            for (int i = 1; i < n; i++) {
+                int a = sc.nextInt() - 1;
+                int b = sc.nextInt() - 1;
+                int len = sc.nextInt();
+
+                adjList.get(a).add(new Edge(b, len));
+                adjList.get(b).add(new Edge(a, len));
             }
-               int result = 0;
-            for (int i = 1; i < vertices; i++) {
-                result = Math.max(result, dfs(adjList, i, new boolean[vertices]));
-            }
-            System.out.println(result);
+
+            maxDistance = -1;
+            dfs(0, 0, new boolean[n]);
+
+            maxDistance = -1;
+            dfs(furthestNode, 0, new boolean[n]);
+
+            System.out.println(maxDistance);
         }
     }
 
-    private static int dfs(List<TownStreet>[] adjMatrix, int vertex, boolean[] visited) {
-        if (visited[vertex - 1]) return 0;
-        List<TownStreet> matrix = adjMatrix[vertex - 1];
-        int result = 0;
-        for (TownStreet street : matrix) {
-            int weight = street.weight;
-            int i = street.to;
-            if (weight > 0 && !visited[i]) {
-                visited[vertex - 1] = true;
-                result = Math.max(result, weight + dfs(adjMatrix, i + 1, visited));
+    private static void dfs(int node, int dist, boolean[] visited) {
+        visited[node] = true;
+
+        if (dist > maxDistance) {
+            maxDistance = dist;
+            furthestNode = node;
+        }
+
+        for (Edge e : adjList.get(node)) {
+            if (!visited[e.to]) {
+                dfs(e.to, dist + e.weight, visited);
             }
         }
-        return result;
     }
 }
 
-class TownStreet {
+class Edge {
     int to;
     int weight;
 
-    public TownStreet(int to, int weight) {
+    public Edge(int to, int weight) {
         this.to = to;
         this.weight = weight;
     }
