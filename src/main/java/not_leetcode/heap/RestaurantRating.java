@@ -6,23 +6,35 @@ public class RestaurantRating {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
+        PriorityQueue<Integer> lowerQueue = new PriorityQueue<>(Comparator.reverseOrder());
+        PriorityQueue<Integer> upperQueue = new PriorityQueue<>();
+        int count = 0;
         while (n-- > 0) {
             int type = sc.nextInt();
             if (type == 1) {
                 int rating = sc.nextInt();
-                queue.add(rating);
+                count++;
+                if (count / 3 > upperQueue.size()) {
+                    if (rating < lowerQueue.peek()) {
+                        upperQueue.add(lowerQueue.poll());
+                        lowerQueue.add(rating);
+                    } else {
+                        upperQueue.add(rating);
+                    }
+                } else {
+                    if (!lowerQueue.isEmpty() && !upperQueue.isEmpty() && rating > lowerQueue.peek() && rating > upperQueue.peek()) {
+                        lowerQueue.add(upperQueue.poll());
+                        upperQueue.add(rating);
+                    } else {
+                        lowerQueue.add(rating);
+                    }
+                }
 
             } else {
-                int amount = queue.size() / 3;
-                List<Integer> toBeAdded = new LinkedList<>();
-                for (int i = 0; i < amount - 1; i++) {
-                    toBeAdded.add(queue.poll());
-                }
-                if (amount == 0) System.out.println("No reviews yet");
-                else {
-                    System.out.println(queue.peek());
-                    queue.addAll(toBeAdded);
+                if (upperQueue.isEmpty()) {
+                    System.out.println("No reviews yet");
+                } else {
+                    System.out.println(upperQueue.peek());
                 }
             }
         }
