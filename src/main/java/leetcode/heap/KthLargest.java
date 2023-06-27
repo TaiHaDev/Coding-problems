@@ -3,6 +3,10 @@ package leetcode.heap;
 import java.util.PriorityQueue;
 
 public class KthLargest {
+    /**
+     * good question to understand heap and priority queue
+     * @param args
+     */
     public static void main(String[] args) {
         KthLargest kthLargest = new KthLargest(2, new int[]{0});
         System.out.println(kthLargest.add(-1));   // return 4
