@@ -6,6 +6,12 @@ public class ReorganiseString767 {
     public static void main(String[] args) {
         System.out.println(new ReorganiseString767().reorganizeString("aab"));
     }
+
+    /**
+     * can be solved using heap but sorting is not necessary so we can just find the max occurrence letter with O(n) time only
+     * @param s
+     * @return
+     */
     public String reorganizeString(String s) {
         char[] result = new char[s.length()];
         Map<Character, Integer> count = new HashMap<>();
@@ -21,7 +27,7 @@ public class ReorganiseString767 {
             }
         }
         count.remove(letter);
-        if (max < s.length() / 2) return " ";
+        if (max > (s.length() + 1) / 2) return "";
         int index = 0;
         for (int i = 0; i < max; i++) {
             result[index] = letter;
