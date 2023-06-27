@@ -1,8 +1,8 @@
-## Exercise answers
+## Exercise answers (deprecated)
 This part includes answers to exercises in the Introduction to Algorithms book by MIT press that I encountered.
 
 
-#### Heapsort
+[#### Heapsort
 6.1-1. What are the minimum and maximum numbers of elements in a heap of
 height h?
 - maximum: 2^(h+1) - 1 (full element in tree), minimum: 2^(h) (only one element on the last level).
@@ -38,4 +38,4 @@ of the max heap, a node must have its children smaller than itself, therefore it
   Show that, with the array representation for storing an n-element heap,
   the leaves are the nodes indexed by ⌊n/2⌊ + 1, ⌊n/2⌊ + 2, … , n.
 -  compute the left node of [n/2] + 1, we found out that the index is larger than the total element
-of the heap, therefore that node is indeed a leaf node. We can conclude than any node indexed by [n/2] + 1 forward is a leaf node.
+of the heap, therefore that node is indeed a leaf node. We can concl]()ude than any node indexed by [n/2] + 1 forward is a leaf node.
