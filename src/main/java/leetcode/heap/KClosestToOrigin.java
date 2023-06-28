@@ -15,7 +15,7 @@ public class KClosestToOrigin {
     }
     public int[][] kClosest(int[][] points, int k) {
         int[][] result = new int[k][2];
-        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingDouble(point -> Math.sqrt(Math.pow(point[0], 2) + Math.pow(point[1], 2))));
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingDouble(point -> -Math.pow(point[0], 2) + Math.pow(point[1], 2)));
         for (int[] point : points) {
             pq.add(point);
             if (pq.size() > k) {
