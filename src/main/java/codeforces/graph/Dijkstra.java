@@ -26,22 +26,31 @@ public class Dijkstra {
         int[] path = new int[vertices + 1];
         while (!pq.isEmpty()) {
             int[] cur = pq.remove();
+            if (dist[cur[0]] != cur[1]) continue;
             for (int[] next : adjList.get(cur[0])) {
                 int updatedWeight = next[1] + cur[1];
                 if (updatedWeight < dist[next[0]]) {
                     dist[next[0]] = updatedWeight;
                     pq.add(new int[]{next[0], updatedWeight});
-                    path[cur[0]] = next[0];
+                    path[next[0]] = cur[0];
                 }
             }
         }
-        if (dist[vertices] == Integer.MAX_VALUE) System.out.println(-1);
-        else {
-            int cur = 1;
-            System.out.print(cur);
-            while(cur != vertices) {
-                cur = path[cur];
-                System.out.print(" " + cur);
+        if (dist[vertices] == Integer.MAX_VALUE) {
+            System.out.println(-1);
+        } else {
+            int last = vertices;
+            int next = path[last];
+            while(last != 1) {
+                int temp = path[next];
+                path[next] = last;
+                last = next;
+                next = temp;
+            }
+            System.out.print(last);
+            while(last != vertices) {
+                last = path[last];
+                System.out.print(" " + last);
             }
         }
     }
