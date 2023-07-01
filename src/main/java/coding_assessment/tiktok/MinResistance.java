@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class MinResistance {
+    /**
+     * m*n matrix, start at any position in the first column, find the minimum path to the last column
+     * @param args
+     */
     public static void main(String[] args) {
         int[][] input = {{2, 6, 7}, {1, 5, 8}, {3, 4, 9}};
         System.out.println(minimumResistence(List.of(List.of(2,6,7), List.of(1,5,8), List.of(3,4,9))));
