@@ -6,12 +6,12 @@ This my collection of leetcode solutions that I have done and some important top
 - [ ] Probabilistic Analysis and Randomised Algorithms
 #### Sorting
 - [x] insertion sort
-- [ ] Heapsort
+- [x] Heapsort
 - [ ] Quicksort
 - [ ] Counting ,Radix, Bucket sort (optional)
 #### Data structures
 - [x] array
-- [ ] matrices
+- [x] matrices
 - [x] stack
 - [x] queue
 - [ ] hashtable (hash function, collision, )
@@ -30,9 +30,12 @@ This my collection of leetcode solutions that I have done and some important top
   - [x] Graph representations
   - [x] Breadth-first-search (BFS)
   - [x] Depth-first-search (DFS)
-  - [ ] tobe added more
+  - [x] Topological sort
+  - [ ] Strongly connected components (not fully understand yet to be revised later)
 - [ ] Minimum spanning trees
 - [ ] Single sources shortest paths
+  -  [x] Bellman-Ford algorithm
+  -  [x] Dijkstra's algorithm
 - [ ] All-pairs shortest paths
 - [ ] Maximum flows
 - [ ] Matchings in Bipartite graph
