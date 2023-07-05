@@ -44,10 +44,10 @@ public class WormHoles {
             int v = cur[1];
             int weight = cur[2];
             if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 
