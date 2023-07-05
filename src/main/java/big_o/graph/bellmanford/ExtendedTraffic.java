@@ -13,20 +13,23 @@ public class ExtendedTraffic {
         while (n-- > 0) {
             System.out.println("Case " + c++ + ":");
             int junctions = reader.nextInt();
-            int[] weights = new int[junctions];
-            for (int i = 0; i < junctions; i++) {
+            int[] weights = new int[junctions + 1];
+            for (int i = 1; i <= junctions; i++) {
                 weights[i] = reader.nextInt();
             }
-            int[][] edges = new int[reader.nextInt()][2];
+            int m = reader.nextInt();
+            int[][] edges = new int[m][3];
             for (int i = 0; i < edges.length; i++) {
-                edges[i] = new int[]{reader.nextInt(), reader.nextInt()};
+                int u = reader.nextInt();
+                int v = reader.nextInt();
+                edges[i] = new int[]{u, v, (int) Math.pow(weights[v] - weights[u], 3)};
             }
-            int[] dist = new int[junctions];
-            bellmanFord(edges, weights, dist);
+            int[] dist = new int[junctions + 1];
+            bellmanFord(edges,  dist, junctions);
             int count = reader.nextInt();
             while(count-- > 0) {
                 int des = reader.nextInt();
-                int result = dist[des - 1];
+                int result = dist[des];
                 if (result == Integer.MAX_VALUE || result < 3) {
                     System.out.println("?");
                 } else {
@@ -35,16 +38,18 @@ public class ExtendedTraffic {
             }
         }
     }
-    public static void bellmanFord(int[][] edges, int[] weights, int[] dist) {
+
+    public static void bellmanFord(int[][] edges, int[] dist, int junctions) {
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[0] = 0;
-        for (int i = 0; i < weights.length; i++) {
+        dist[1] = 0;
+        for (int i = 0; i < junctions - 1; i++) {
             for (int j = 0; j < edges.length; j++) {
                 int[] cur = edges[j];
-                int source = cur[0] - 1;
-                int des = cur[1] - 1;
-                if (dist[source] != Integer.MAX_VALUE && dist[source] + Math.pow(weights[des] - weights[source], 3) < dist[des]) {
-                    dist[des] = dist[source] + (int) Math.pow(weights[des] - weights[source], 3);
+                int u = cur[0];
+                int v = cur[1];
+                int w = cur[2];
+                if (dist[u] != Integer.MAX_VALUE) {
+                    dist[v] = Math.min(dist[v], dist[u] + w);
                 }
             }
         }
