@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class ExtendedTraffic {
+    /**
+     * it's not just about detecting the negative cycle but also mark all the negative cycle as MIN_VALUE.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         Reader reader = new Reader();
         int n = reader.nextInt();
@@ -48,8 +53,19 @@ public class ExtendedTraffic {
                 int u = cur[0];
                 int v = cur[1];
                 int w = cur[2];
-                if (dist[u] != Integer.MAX_VALUE) {
-                    dist[v] = Math.min(dist[v], dist[u] + w);
+                if (dist[u] != Integer.MAX_VALUE && dist[u] + (long) w < dist[v]) {
+                    dist[v] = dist[u] + w;
+                }
+            }
+        }
+        for (int i = 0; i < junctions - 1; i++) {
+            for (int j = 0; j < edges.length; j++) {
+                int[] cur = edges[j];
+                int u = cur[0];
+                int v = cur[1];
+                int w = cur[2];
+                if (dist[u] != Integer.MAX_VALUE && (long) dist[u] + w < dist[v]) {
+                    dist[v] = Integer.MIN_VALUE;
                 }
             }
         }
