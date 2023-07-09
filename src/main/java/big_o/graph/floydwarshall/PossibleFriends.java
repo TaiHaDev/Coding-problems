@@ -45,7 +45,6 @@ public class PossibleFriends {
                     if (dist[i][k] + dist[k][j] == 2 && dist[i][j] == 0) {
                         dist[i][j] = -1;
                     }
-
                 }
             }
         }
