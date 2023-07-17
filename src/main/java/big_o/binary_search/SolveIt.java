@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class SolveIt {
+    // using calculus to understand to property of the equation then solve the equation based on that
     static final double eps = 1e-8;
-
     public static double f(double p , double q , double r , double s , double t , double u , double x) {
         return (p * Math.exp(-x) + q * Math.sin(x)
                 + r * Math.cos(x) + s * Math.tan(x) + t * x * x + u);
