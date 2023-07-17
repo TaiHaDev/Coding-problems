@@ -1,13 +1,11 @@
 package leetcode.linkedlist;
 
-import java.util.LinkedList;
-
 public class ReverseLinkedList {
 
     /**
      * using two pointer (curr and next) to iteratively reverse the linked list node by node, curr is initial null;
      */
-      public class ListNode {
+      private class ListNode {
           int val;
           ListNode next;
           ListNode() {}
