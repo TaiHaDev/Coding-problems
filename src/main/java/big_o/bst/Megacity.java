@@ -14,7 +14,6 @@ public class Megacity {
             treeSet.add(new City(sc.nextInt(), sc.nextInt(), sc.nextInt()));
         }
         int minRadius = -1;
-        int curCity = treeSet.
         while(curPop < 1000000) {
 
         }
