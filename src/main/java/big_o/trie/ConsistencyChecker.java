@@ -3,7 +3,6 @@ package big_o.trie;
 import java.util.Scanner;
 
 public class ConsistencyChecker {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -11,15 +10,11 @@ public class ConsistencyChecker {
         while (n-- > 0) {
             long total = sc.nextLong();
             Trie trie = new Trie();
-            boolean isConsistent = true;
             for (long i = 0; i < total; i++) {
-                if (!trie.addNumber(sc.next())) {
-                    isConsistent = false;
-                    break;
-                }
+                trie.addNumber(sc.next());
             }
             String cStr = "Case " + c++ + ": ";
-            if (isConsistent) {
+            if (!trie.isPrefix(trie.root)) {
                 System.out.println(cStr + "YES");
             } else {
                 System.out.println(cStr + "NO");
@@ -30,21 +25,42 @@ public class ConsistencyChecker {
     static class Trie {
         Node root = new Node();
 
-        public boolean addNumber(String number) {
+//        public boolean addNumber(String number) {
+//            Node temp = root;
+//            char[] charArray = number.toCharArray();
+//            for (int i = 0; i < charArray.length; i++) {
+//                char digit = charArray[i];
+//                int cur = Character.getNumericValue(digit);
+//                if (temp.child[cur] != null) {
+//                    if (i == charArray.length - 1 || temp.child[cur].wordCount == 1) return false;
+//                } else {
+//                    temp.child[cur] = new Node();
+//                }
+//                temp = temp.child[cur];
+//            }
+//            temp.wordCount = 1;
+//            return true;
+//        }
+
+        public void addNumber(String number) {
             Node temp = root;
-            char[] charArray = number.toCharArray();
-            for (int i = 0; i < charArray.length; i++) {
-                char digit = charArray[i];
-                int cur = Character.getNumericValue(digit);
-                if (temp.child[cur] != null) {
-                    if (i == charArray.length - 1 || temp.child[cur].wordCount == 1) return false;
-                } else {
-                    temp.child[cur] = new Node();
+            for (char c : number.toCharArray()) {
+                int index = Character.getNumericValue(c);
+                if (temp.child[index] == null) {
+                    temp.child[index] = new Node();
                 }
-                temp = temp.child[cur];
+                temp = temp.child[index];
             }
             temp.wordCount = 1;
-            return true;
+        }
+        public boolean isPrefix(Node node) {
+            for (int i = 0; i < 10; i++) {
+                if (node.child[i] != null) {
+                    if (node.wordCount != 0) return true;
+                    if (isPrefix(node.child[i])) return true;
+                }
+            }
+            return false;
         }
     }
 
