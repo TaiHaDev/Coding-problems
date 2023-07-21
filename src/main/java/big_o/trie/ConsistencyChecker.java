@@ -32,7 +32,7 @@ public class ConsistencyChecker {
 //                char digit = charArray[i];
 //                int cur = Character.getNumericValue(digit);
 //                if (temp.child[cur] != null) {
-//                    if (i == charArray.length - 1 || temp.child[cur].wordCount == 1) return false;
+//                    if ((i == charArray.length - 1 && !isEmpty(temp.child[cur]) || temp.child[cur].wordCount == 1) return false;
 //                } else {
 //                    temp.child[cur] = new Node();
 //                }
@@ -41,6 +41,12 @@ public class ConsistencyChecker {
 //            temp.wordCount = 1;
 //            return true;
 //        }
+        public boolean isEmpty(Node node) {
+            for (int i = 0; i < 10; i++) {
+                if (node.child[i] != null) return false;
+            }
+            return true;
+        }
 
         public void addNumber(String number) {
             Node temp = root;
