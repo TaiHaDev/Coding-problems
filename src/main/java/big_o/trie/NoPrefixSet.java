@@ -14,7 +14,6 @@ public class NoPrefixSet {
                 if (temp.child[index] == null) {
                     temp.child[index] = new Node();
                 } else {
-                    if (temp.child[index].wordCount != 0 || (i == charArray.length - 1 && ))
                 }
                 temp = temp.child[index];
             }
