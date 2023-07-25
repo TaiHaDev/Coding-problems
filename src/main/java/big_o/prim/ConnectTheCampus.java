@@ -26,7 +26,6 @@ public class ConnectTheCampus {
             visited[u] = true;
             visited[v] = true;
         }
-        prim(buildings);
     }
 
     private static double distance(int x1, int y1, int x2, int y2) {
