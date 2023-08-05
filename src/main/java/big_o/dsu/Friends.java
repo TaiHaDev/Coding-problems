@@ -50,14 +50,16 @@ public class Friends {
         if (rootV == rootU) return;
         if (rank[rootU] < rank[rootV]) {
             parent[rootU] = rootV;
-            sum[rootV]++;
+            sum[rootV] += sum[rootU];
+
         } else if (rank[rootV] < rank[rootU]) {
             parent[rootV] = rootU;
-            sum[rootU]++;
+            sum[rootU] += sum[rootV];
+
         } else {
             parent[rootU] = rootV;
             rank[rootV]++;
-            sum[rootV]++;
+            sum[rootV] += sum[rootU];
         }
     }
 
