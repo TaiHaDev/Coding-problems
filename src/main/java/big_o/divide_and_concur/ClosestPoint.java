@@ -2,6 +2,7 @@ package big_o.divide_and_concur;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class ClosestPoint {
 
