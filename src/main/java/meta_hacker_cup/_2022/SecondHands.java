@@ -1,14 +1,13 @@
 package meta_hacker_cup._2022;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.StringTokenizer;
 
 public class SecondHands {
     public static FastScanner sc = new FastScanner();
     public static void main(String[] args) throws IOException {
         int n = sc.nextInt();
+        int ca = 1;
         while (n-- > 0) {
             int len = sc.nextInt();
             int k = sc.nextInt();
@@ -16,10 +15,11 @@ public class SecondHands {
             for (int i = 0; i < len; i++) {
                 input[i] = sc.nextInt();
             }
+            String castr = "Case " + "#" + ca++ +": ";
             if (solve(input, k)) {
-                System.out.println("YES");
+                System.out.println(castr + "YES");
             } else {
-                System.out.println("NO");
+                System.out.println(castr + "NO");
             }
         }
     }
