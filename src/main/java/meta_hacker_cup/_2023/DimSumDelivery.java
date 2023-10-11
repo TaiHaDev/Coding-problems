@@ -12,8 +12,8 @@ public class DimSumDelivery {
             long col = sc.nextLong();
             long a = sc.nextLong();
             long b = sc.nextLong();
-            System.out.print("Case #" + a + ": ");
-            if (a > b) {
+            System.out.print("Case #" + c++ + ": ");
+            if (row > col) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
