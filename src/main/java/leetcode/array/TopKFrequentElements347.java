@@ -37,7 +37,6 @@ public class TopKFrequentElements347 {
                 res[k - 1] = ans;
                 k--;
             }
-
         }
         return res;
     }
