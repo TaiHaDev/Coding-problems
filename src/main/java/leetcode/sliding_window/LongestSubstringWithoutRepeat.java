@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LongestSubstringWithoutRepeat {
+    // sliding window to be revisited
     public static void main(String[] args) {
         System.out.println(new LongestSubstringWithoutRepeat().lengthOfLongestSubstring("abcabcbb"));
     }
