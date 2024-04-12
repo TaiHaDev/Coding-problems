@@ -5,6 +5,7 @@ public class BuyAndSellStock122 {
         int[] prices = {7,6,4,3,2,1};
         System.out.println(solution(prices));
     }
+
     static int solution(int[] prices) {
         int result = 0;
         for (int i = 1; i < prices.length; i++) {
