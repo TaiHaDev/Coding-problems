@@ -15,15 +15,15 @@ public class ProductOfArrayExceptSelf238 {
      * @return
      */
     public static int[] productExceptSelf(int[] nums) {
-        int[] result = new int[nums.length];
-        for (int i = 0, acc = 1; i < nums.length; i++) {
-            result[i] = acc;
-            acc *= nums[i];
+        int[] ans = new int[nums.length];
+        Arrays.fill(ans, 1);
+        for (int i = 1; i < nums.length; i++) {
+            ans[i] *= ans[i - 1] * nums[i-1];
         }
-        for (int i = nums.length - 1, acc = 1; i >= 0; i--) {
-            result[i] *= acc;
-            acc *= nums[i];
+        for (int i = nums.length - 2; i >= 0; i--) {
+            ans[i] *= nums[i + 1];
+            nums[i] *= nums[i + 1];
         }
-        return result;
+        return ans;
     }
 }
