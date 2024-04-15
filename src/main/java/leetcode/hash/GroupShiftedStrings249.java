@@ -12,7 +12,7 @@ public class GroupShiftedStrings249 {
             char[] curStr = str.toCharArray();
             int offset = curStr[0] - 'a';
             for (int i = 0; i < curStr.length; i++) {
-                curStr[i] = (char) ((curStr[i] - offset + 26) % 26 + 'a');
+                curStr[i] = (char) ((curStr[i] - 'a' - offset + 26) % 26 + 'a');
             }
             map.computeIfAbsent(Arrays.toString(curStr), k -> new ArrayList()).add(str);
         }
