@@ -7,6 +7,9 @@ public class LeftMostColumn1428 {
         public List<Integer> dimensions() {
             return null;
         }
+        public int get(int row, int col) {
+            return -1;
+        }
     }
     public int leftMostColumnWithOne(BinaryMatrix binaryMatrix) {
         List<Integer> dimensions = binaryMatrix.dimensions();
