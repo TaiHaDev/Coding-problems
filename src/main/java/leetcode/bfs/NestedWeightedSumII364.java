@@ -31,4 +31,23 @@ public class NestedWeightedSumII364 {
 //        }
 //        return res;
 //    }
+//public int depthSumInverse(List<NestedInteger> nestedList) {
+//    int res = 0;
+//    int intSum = 0;
+//    Queue<NestedInteger> queue = new LinkedList<>();
+//    queue.addAll(nestedList);
+//    while(!queue.isEmpty()) {
+//        int curSize = queue.size();
+//        for (int i = 0; i < curSize; i++) {
+//            NestedInteger cur = queue.poll();
+//            if (!cur.isInteger()) {
+//                queue.addAll(cur.getList());
+//            } else {
+//                intSum += cur.getInteger();
+//            }
+//        }
+//        res += intSum;
+//    }
+//    return res;
+//}
 }
